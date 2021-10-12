@@ -16,6 +16,7 @@ updateDisplay();
 
 const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', event => {
+    console.log(event)
     const { target } = event;
     const { value } = target;
     if (!target.matches('button')) {
@@ -46,6 +47,48 @@ keys.addEventListener('click', event => {
     updateDisplay();
 });
 
+const romanianKeys = document.querySelector('.romanian-calculator-keys');
+romanianKeys.addEventListener('click', event => {
+    const { target } = event;
+    const { value } = target;
+    if (!target.matches('button')) {
+        return;
+    }
+
+    switch (value) {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+            handleOperator(value);
+            break;
+        case '.':
+            inputDecimal(value);
+            break;
+        case 'all-clear':
+            resetCalculator();
+            break;
+        default:
+            // check if the key is an integer
+            // if (Number.isInteger(parseFloat(value))) {
+                inputDigitRoman(value);
+            // }
+    }
+
+    updateDisplay();
+});
+
+function inputDigitRoman(digit) {
+    const { displayValue, waitingForSecondOperand } = calculator;
+
+    if (waitingForSecondOperand === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondOperand = false;
+    } else {
+        calculator.displayValue = displayValue === '' ? digit : displayValue + digit;
+    }
+}
 function inputDigit(digit) {
     const { displayValue, waitingForSecondOperand } = calculator;
 
@@ -113,3 +156,18 @@ function resetCalculator() {
     calculator.operator = null;
     console.log(calculator);
 }
+
+document.getElementById('standardCalculator').style.display = 'block'
+document.getElementById('romanianCalculator').style.display = 'none'
+
+$(function() {
+    $('#calculatorMode').change(function() {
+        if(!$(this).prop('checked')) {
+            document.getElementById('standardCalculator').style.display = 'none'
+            document.getElementById('romanianCalculator').style.display = 'block'
+        }else {
+            document.getElementById('standardCalculator').style.display = 'block'
+            document.getElementById('romanianCalculator').style.display = 'none'
+        }
+    })
+})

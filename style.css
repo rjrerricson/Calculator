@@ -93,6 +93,12 @@ button:hover {
     grid-gap: 20px;
     padding: 20px;
 }
+.romanian-calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
 .equal-sign {
     background-color: #2e86c0;
     border-color: #337cac;

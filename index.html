@@ -11,37 +11,71 @@
 
 <div class="calculator">
     <div>
-        <input type="checkbox" checked data-toggle="toggle" data-on="Standard" data-off="Romanian" data-onstyle="success" data-offstyle="danger">
+        <input id="calculatorMode" type="checkbox" checked data-toggle="toggle" data-on="Standard" data-off="Romanian" data-onstyle="success" data-offstyle="danger">
     </div>
-    <input type="text" class="calculator-screen" value="0" disabled />
-    <div class="calculator-keys">
+   <div id="standardCalculator">
+       <input type="text" class="calculator-screen" value="0" disabled />
+       <div class="calculator-keys">
 
-        <button type="button" class="operator" value="+">+</button>
-        <button type="button" class="operator" value="-">-</button>
-        <button type="button" class="operator" value="*">&times;</button>
-        <button type="button" class="operator" value="/">&divide;</button>
+           <button type="button" class="operator" value="+">+</button>
+           <button type="button" class="operator" value="-">-</button>
+           <button type="button" class="operator" value="*">&times;</button>
+           <button type="button" class="operator" value="/">&divide;</button>
 
-        <button type="button" value="7">7</button>
-        <button type="button" value="8">8</button>
-        <button type="button" value="9">9</button>
-
-
-        <button type="button" value="4">4</button>
-        <button type="button" value="5">5</button>
-        <button type="button" value="6">6</button>
+           <button type="button" value="7">7</button>
+           <button type="button" value="8">8</button>
+           <button type="button" value="9">9</button>
 
 
-        <button type="button" value="1">1</button>
-        <button type="button" value="2">2</button>
-        <button type="button" value="3">3</button>
+           <button type="button" value="4">4</button>
+           <button type="button" value="5">5</button>
+           <button type="button" value="6">6</button>
 
 
-        <button type="button" value="0">0</button>
-        <button type="button" class="decimal" value=".">.</button>
-        <button type="button" class="all-clear" value="all-clear">AC</button>
+           <button type="button" value="1">1</button>
+           <button type="button" value="2">2</button>
+           <button type="button" value="3">3</button>
 
-        <button type="button" class="equal-sign" value="=">=</button>
 
+           <button type="button" value="0">0</button>
+           <button type="button" class="decimal" value=".">.</button>
+           <button type="button" class="all-clear" value="all-clear">AC</button>
+
+           <button type="button" class="equal-sign" value="=">=</button>
+
+       </div>
+   </div>
+    <div id="romanianCalculator">
+        <input type="text" class="calculator-screen" disabled />
+        <div class="romanian-calculator-keys">
+
+            <button type="button" class="operator" value="+">+</button>
+            <button type="button" class="operator" value="-">-</button>
+            <button type="button" class="operator" value="*">&times;</button>
+            <button type="button" class="operator" value="/">&divide;</button>
+
+<!--            <button type="button" value="7">7</button>-->
+<!--            <button type="button" value="8">8</button>-->
+<!--            <button type="button" value="9">I</button>-->
+
+
+            <button type="button" value="M">M</button>
+            <button type="button" value="D">D</button>
+            <button type="button" value="C">C</button>
+
+
+            <button type="button" value="L">L</button>
+            <button type="button" value="X">X</button>
+            <button type="button" value="V">V</button>
+
+
+            <button type="button" value="I">I</button>
+            <button type="button" class="decimal" value=".">.</button>
+            <button type="button" class="all-clear" value="all-clear">AC</button>
+
+            <button type="button" class="equal-sign" value="=">=</button>
+
+        </div>
     </div>
 </div>
 
