@@ -3,7 +3,6 @@ $( document ).ready(function() {
     document.getElementById('standardCalculator').style.display = 'block'
     document.getElementById('romanianCalculator').style.display = 'none'
 
-
     const calculator = {
         displayValue: '0',
         firstOperand: null,
