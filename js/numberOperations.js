@@ -1,7 +1,6 @@
 
 $( document ).ready(function() {
-    document.getElementById('standardCalculator').style.display = 'block'
-    document.getElementById('romanianCalculator').style.display = 'none'
+
     updateDisplay();
 
     const keys = document.querySelector('.calculator-keys');
