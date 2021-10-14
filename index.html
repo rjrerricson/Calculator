@@ -15,8 +15,14 @@
 <body>
 
 <div class="calculator">
-    <div>
-        <input id="calculatorMode" type="checkbox" checked data-toggle="toggle" data-on="Standard" data-off="Romanian" data-onstyle="success" data-offstyle="danger">
+    <div class="row">
+        <div class="col-6">
+            <input id="calculatorMode" type="checkbox" checked data-toggle="toggle" data-on="Standard" data-off="Romanian" data-onstyle="success" data-offstyle="danger">
+        </div>
+        <div class="col-6 text-right">
+            <span style="font-size: 25px" class="pr-3" id="romanOperator">
+            </span>
+        </div>
     </div>
    <div id="standardCalculator">
        <input type="text" class="calculator-screen" value="0" disabled />
@@ -51,18 +57,13 @@
        </div>
    </div>
     <div id="romanianCalculator">
-        <input type="text" class="calculator-screen" disabled />
+        <input type="text" class="romanian-calculator-screen" disabled />
         <div class="romanian-calculator-keys">
 
             <button type="button" class="operator" value="+">+</button>
             <button type="button" class="operator" value="-">-</button>
             <button type="button" class="operator" value="*">&times;</button>
             <button type="button" class="operator" value="/">&divide;</button>
-
-<!--            <button type="button" value="7">7</button>-->
-<!--            <button type="button" value="8">8</button>-->
-<!--            <button type="button" value="9">I</button>-->
-
 
             <button type="button" value="M">M</button>
             <button type="button" value="D">D</button>
@@ -75,7 +76,7 @@
 
 
             <button type="button" value="I">I</button>
-            <button type="button" class="decimal" value=".">.</button>
+            <button type="button" class="decimal" value="" disabled></button>
             <button type="button" class="all-clear" value="all-clear">AC</button>
 
             <button type="button" class="equal-sign" value="=">=</button>
@@ -89,6 +90,7 @@
 <script src="js/bootstrap4-toggle.js"></script>
 
 <script src="script.js" ></script>
+<script src="romanCalcActions.js" ></script>
 </body>
 
 </html>
