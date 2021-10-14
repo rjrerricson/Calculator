@@ -1,20 +1,6 @@
 
 $( document ).ready(function() {
 
-    const romanCalculator = {
-        displayValue: '0',
-        firstOperand: null,
-        waitingForSecondOperand: false,
-        operator: null,
-    };
-
-    function updateRomanDisplay() {
-        // select the element with class of `calculator-screen`
-        const display = document.querySelector('.romanian-calculator-screen');
-        // update the value of the element with the contents of `displayValue`
-        display.value = romanCalculator.displayValue;
-    }
-
     updateRomanDisplay();
 
     const romanianKeys = document.querySelector('.romanian-calculator-keys');
@@ -36,72 +22,37 @@ $( document ).ready(function() {
                 resetCalculator();
                 break;
             default:
-                inputDigitRoman(value);
+                inputDigit(value);
         }
 
         updateRomanDisplay();
     });
 
-    function inputDigitRoman(digit) {
-        const { displayValue, waitingForSecondOperand } = romanCalculator;
-
-        if (waitingForSecondOperand === true) {
-            romanCalculator.displayValue = digit;
-            romanCalculator.waitingForSecondOperand = false;
-        } else {
-            romanCalculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-        }
-    }
-
-    function inputDecimal(dot) {
-        if (romanCalculator.waitingForSecondOperand === true) {
-            romanCalculator.displayValue = '0.'
-            romanCalculator.waitingForSecondOperand = false;
-            return
-        }
-
-        if (!romanCalculator.displayValue.includes(dot)) {
-            romanCalculator.displayValue += dot;
-        }
-    }
 
     function handleOperator(nextOperator) {
-        const { firstOperand, displayValue, operator } = romanCalculator
+        const { firstOperand, displayValue, operator } = calculator
         const inputValue = displayValue;
 
-        if (operator && romanCalculator.waitingForSecondOperand)  {
-            romanCalculator.operator = nextOperator;
+        if (operator && calculator.waitingForSecondOperand)  {
+            calculator.operator = nextOperator;
             return;
         }
         $("#operator").html(nextOperator);
 
         if (firstOperand == null) {
-            romanCalculator.firstOperand = inputValue;
+            calculator.firstOperand = inputValue;
         } else if (operator) {
-            const result = convertNumberToRoman(calculate(firstOperand, inputValue, operator));
+            const {firstValueResult, secondValueResult} = convertRomanToNumber(firstOperand, inputValue)
+            const result = convertNumberToRoman(calculate(firstValueResult, secondValueResult, operator));
 
-            romanCalculator.displayValue = result;
-            romanCalculator.firstOperand = result;
+            calculator.displayValue = result;
+            calculator.firstOperand = result;
         }
 
-        romanCalculator.waitingForSecondOperand = true;
-        romanCalculator.operator = nextOperator;
+        calculator.waitingForSecondOperand = true;
+        calculator.operator = nextOperator;
     }
 
-    function calculate(firstOperand, secondOperand, operator) {
-        const {firstValueResult, secondValueResult} = convertRomanToNumber(firstOperand, secondOperand)
-        if (operator === '+') {
-            return firstValueResult + secondValueResult;
-        } else if (operator === '-') {
-            return firstValueResult - secondValueResult;
-        } else if (operator === '*') {
-            return firstValueResult * secondValueResult;
-        } else if (operator === '/') {
-            return firstValueResult / secondValueResult;
-        }
-
-        return secondOperand;
-    }
 
     function convertNumberToRoman(num) {
         if (!+num)
@@ -148,14 +99,6 @@ $( document ).ready(function() {
             }
         })
         return result;
-    }
-
-    function resetCalculator() {
-        romanCalculator.displayValue = '0';
-        romanCalculator.firstOperand = null;
-        romanCalculator.waitingForSecondOperand = false;
-        romanCalculator.operator = null;
-        $("#operator").html('');
     }
 
 });
