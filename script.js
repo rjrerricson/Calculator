@@ -1,7 +1,7 @@
 
 $( document ).ready(function() {
-    document.getElementById('standardCalculator').style.display = 'block'
-    document.getElementById('romanianCalculator').style.display = 'none'
+    document.getElementById('standardCalculator').style.display = 'none'
+    document.getElementById('romanianCalculator').style.display = 'block'
 
     const calculator = {
         displayValue: '0',
@@ -47,38 +47,6 @@ $( document ).ready(function() {
                 if (Number.isInteger(parseFloat(value))) {
                     inputDigit(value);
                 }
-        }
-
-        updateDisplay();
-    });
-
-    const romanianKeys = document.querySelector('.romanian-calculator-keys');
-    romanianKeys.addEventListener('click', event => {
-        const { target } = event;
-        const { value } = target;
-        if (!target.matches('button')) {
-            return;
-        }
-
-        switch (value) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-            case '=':
-                handleOperator(value);
-                break;
-            case '.':
-                inputDecimal(value);
-                break;
-            case 'all-clear':
-                resetCalculator();
-                break;
-            default:
-                // check if the key is an integer
-                // if (Number.isInteger(parseFloat(value))) {
-                inputDigitRoman(value);
-            // }
         }
 
         updateDisplay();
