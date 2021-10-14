@@ -2,21 +2,6 @@
 $( document ).ready(function() {
     document.getElementById('standardCalculator').style.display = 'block'
     document.getElementById('romanianCalculator').style.display = 'none'
-
-    const calculator = {
-        displayValue: '0',
-        firstOperand: null,
-        waitingForSecondOperand: false,
-        operator: null,
-    };
-
-    function updateDisplay() {
-        // select the element with class of `calculator-screen`
-        const display = document.querySelector('.calculator-screen');
-        // update the value of the element with the contents of `displayValue`
-        display.value = calculator.displayValue;
-    }
-
     updateDisplay();
 
     const keys = document.querySelector('.calculator-keys');
@@ -51,18 +36,6 @@ $( document ).ready(function() {
         updateDisplay();
     });
 
-
-    function inputDigit(digit) {
-        const { displayValue, waitingForSecondOperand } = calculator;
-
-        if (waitingForSecondOperand === true) {
-            calculator.displayValue = digit;
-            calculator.waitingForSecondOperand = false;
-        } else {
-            calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-        }
-    }
-
     function inputDecimal(dot) {
         if (calculator.waitingForSecondOperand === true) {
             calculator.displayValue = '0.'
@@ -96,41 +69,5 @@ $( document ).ready(function() {
         calculator.waitingForSecondOperand = true;
         calculator.operator = nextOperator;
     }
-
-    function calculate(firstOperand, secondOperand, operator) {
-        if (operator === '+') {
-            return firstOperand + secondOperand;
-        } else if (operator === '-') {
-            return firstOperand - secondOperand;
-        } else if (operator === '*') {
-            return firstOperand * secondOperand;
-        } else if (operator === '/') {
-            return firstOperand / secondOperand;
-        }
-
-        return secondOperand;
-    }
-
-    function resetCalculator() {
-        calculator.displayValue = '0';
-        calculator.firstOperand = null;
-        calculator.waitingForSecondOperand = false;
-        calculator.operator = null;
-        $("#operator").html('');
-    }
-
-
-    $(function() {
-        $('#calculatorMode').change(function() {
-            $("#operator").html('');
-            if(!$(this).prop('checked')) {
-                document.getElementById('standardCalculator').style.display = 'none'
-                document.getElementById('romanianCalculator').style.display = 'block'
-            }else {
-                document.getElementById('standardCalculator').style.display = 'block'
-                document.getElementById('romanianCalculator').style.display = 'none'
-            }
-        })
-    })
 
 });
