@@ -23,7 +23,7 @@ html {
     width: 400px;
 }
 
-.calculator-screen {
+.calculator-screen, .romanian-calculator-screen {
     width: 100%;
     font-size: 5rem;
     height: 80px;
