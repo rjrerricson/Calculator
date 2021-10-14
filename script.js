@@ -83,6 +83,7 @@ $( document ).ready(function() {
             calculator.operator = nextOperator;
             return;
         }
+        $("#operator").html(nextOperator);
 
         if (firstOperand == null && !isNaN(inputValue)) {
             calculator.firstOperand = inputValue;
@@ -115,11 +116,13 @@ $( document ).ready(function() {
         calculator.firstOperand = null;
         calculator.waitingForSecondOperand = false;
         calculator.operator = null;
+        $("#operator").html('');
     }
 
 
     $(function() {
         $('#calculatorMode').change(function() {
+            $("#operator").html('');
             if(!$(this).prop('checked')) {
                 document.getElementById('standardCalculator').style.display = 'none'
                 document.getElementById('romanianCalculator').style.display = 'block'
