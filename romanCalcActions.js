@@ -73,7 +73,7 @@ $( document ).ready(function() {
             romanCalculator.operator = nextOperator;
             return;
         }
-        $("#romanOperator").html(nextOperator);
+        $("#operator").html(nextOperator);
 
         if (firstOperand == null) {
             romanCalculator.firstOperand = inputValue;
@@ -155,6 +155,7 @@ $( document ).ready(function() {
         romanCalculator.firstOperand = null;
         romanCalculator.waitingForSecondOperand = false;
         romanCalculator.operator = null;
+        $("#operator").html('');
     }
 
 });
