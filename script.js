@@ -21,7 +21,6 @@ $( document ).ready(function() {
 
     const keys = document.querySelector('.calculator-keys');
     keys.addEventListener('click', event => {
-        console.log(event)
         const { target } = event;
         const { value } = target;
         if (!target.matches('button')) {
@@ -52,16 +51,7 @@ $( document ).ready(function() {
         updateDisplay();
     });
 
-    function inputDigitRoman(digit) {
-        const { displayValue, waitingForSecondOperand } = calculator;
 
-        if (waitingForSecondOperand === true) {
-            calculator.displayValue = digit;
-            calculator.waitingForSecondOperand = false;
-        } else {
-            calculator.displayValue = displayValue === '' ? digit : displayValue + digit;
-        }
-    }
     function inputDigit(digit) {
         const { displayValue, waitingForSecondOperand } = calculator;
 
@@ -91,7 +81,6 @@ $( document ).ready(function() {
 
         if (operator && calculator.waitingForSecondOperand)  {
             calculator.operator = nextOperator;
-            console.log(calculator);
             return;
         }
 
@@ -105,7 +94,6 @@ $( document ).ready(function() {
 
         calculator.waitingForSecondOperand = true;
         calculator.operator = nextOperator;
-        console.log(calculator);
     }
 
     function calculate(firstOperand, secondOperand, operator) {
@@ -127,7 +115,6 @@ $( document ).ready(function() {
         calculator.firstOperand = null;
         calculator.waitingForSecondOperand = false;
         calculator.operator = null;
-        console.log(calculator);
     }
 
 
