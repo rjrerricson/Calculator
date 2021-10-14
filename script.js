@@ -1,7 +1,7 @@
 
 $( document ).ready(function() {
-    document.getElementById('standardCalculator').style.display = 'none'
-    document.getElementById('romanianCalculator').style.display = 'block'
+    document.getElementById('standardCalculator').style.display = 'block'
+    document.getElementById('romanianCalculator').style.display = 'none'
 
     const calculator = {
         displayValue: '0',
